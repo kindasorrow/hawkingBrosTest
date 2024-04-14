@@ -4,6 +4,11 @@ namespace Models;
 
 final class FilesFinder
 {
+    /**
+     * Directory path to scan.
+     *
+     * @var string
+     */
     private static string $dir = "./hawking/";
 
     public function __construct()
@@ -11,7 +16,13 @@ final class FilesFinder
         //
     }
 
-    public static function find($regex = "/^[a-zA-Z0-9]+\.(bros)$/") : array
+    /**
+     * Find files in the directory that match the given regex pattern.
+     *
+     * @param  string  $regex The regex pattern to match file names against
+     * @return array The list of file names that match the regex pattern
+     */
+    public static function find(string $regex = "/^[a-zA-Z0-9]+\.(bros)$/") : array
     {
         $files = [];
         $filesList = glob(self::$dir . '*');
@@ -25,6 +36,11 @@ final class FilesFinder
         return $files;
     }
 
+    /**
+     * Generate 100 files with random names and extensions in a loop.
+     *
+     * @return void
+     */
     public static function createFiles(): void
     {
         $fileExtensions = ['txt', 'pdf', 'doc', 'bros'];
